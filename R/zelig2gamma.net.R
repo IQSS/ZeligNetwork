@@ -7,8 +7,9 @@
 #' @export
 zelig2gamma.net <- function (formula, ..., data) {
   list(
-       .function = "",
+       .function = "gamma.net",
        formula = formula,
-       data = data
+       data = data,
+       ...
        )
 }

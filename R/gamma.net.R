@@ -23,9 +23,12 @@ gamma.net <- function (
 {	
   
   # The following if-statement was added to prevent bugs in Roxygen
-  if (missing(nullhyp) || is.null(nullhyp))
+  if (missing(nullhyp) || is.null(nullhyp)) {
     nullhyp <- c("qap", "qapspp", "qapy", "qapx", "qapallx", 
                  "cugtie", "cugden", "cuguman", "classical")
+  }
+
+  print(nullhyp)
 
 
   # ...
@@ -136,7 +139,7 @@ gamma.net <- function (
     #    else fit$ctable <- rbind(c(0, 0), fit$ctable)
     #    rownames(fit$ctable) <- c("0", "1")
     #}
-    nullhyp <- match.arg(nullhyp)
+    # nullhyp <- match.arg(nullhyp)
     if ((nullhyp %in% c("qap", "qapspp")) && (nx == 1)) 
         nullhyp <- "qapy"
     if (nullhyp == "classical") {

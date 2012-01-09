@@ -8,7 +8,7 @@ Version: 0.1
 Packaged: Mon Jan 9 10:58:56 2012
 URL: http://gking.harvard.edu/zelig
 Date: 2012-01-09
-Depends: Zelig
+Depends: Zelig (>= 4.0-6), network, sna
 Collate: 'describe.cloglog.net.R' 'describe.gamma.net.R'
     'describe.logit.net.R' 'describe.ls.net.R' 'describe.normal.net.R'
     'describe.poisson.net.R' 'describe.probit.net.R' 'gamma.net.R'
@@ -16,6 +16,7 @@ Collate: 'describe.cloglog.net.R' 'describe.gamma.net.R'
     'param.ls.net.R' 'param.normal.net.R' 'param.poisson.net.R'
     'param.probit.net.R' 'qi.cloglog.net.R' 'qi.gamma.net.R'
     'qi.logit.net.R' 'qi.ls.net.R' 'qi.normal.net.R' 'qi.poisson.net.R'
-    'qi.probit.net.R' 'zelig2cloglog.net.R' 'zelig2gamma.net.R'
-    'zelig2logit.net.R' 'zelig2ls.net.R' 'zelig2normal.net.R'
-    'zelig2poisson.net.R' 'zelig2probit.net.R' 'ZeligNetwork-package.R'
+    'qi.probit.net.R' 'setx.netglm.old' 'setx.netglm.R'
+    'zelig2cloglog.net.R' 'zelig2gamma.net.R' 'zelig2logit.net.R'
+    'zelig2ls.net.R' 'zelig2normal.net.R' 'zelig2poisson.net.R'
+    'zelig2probit.net.R' 'ZeligNetwork-package.R'
