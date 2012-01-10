@@ -1,5 +1,6 @@
 #' Fitting Gamma Network Models
-#' ...
+#'
+#' Fit social network data.
 #' @param formula formula
 #' @param data data.frame
 #' @param LF character-string
