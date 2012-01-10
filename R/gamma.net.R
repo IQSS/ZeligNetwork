@@ -28,9 +28,6 @@ gamma.net <- function (
                  "cugtie", "cugden", "cuguman", "classical")
   }
 
-  print(nullhyp)
-
-
   # ...
 
     gfit <- function(glist, mode, diag) {
@@ -142,7 +139,7 @@ gamma.net <- function (
     # nullhyp <- match.arg(nullhyp)
     if ((nullhyp %in% c("qap", "qapspp")) && (nx == 1)) 
         nullhyp <- "qapy"
-    if (nullhyp == "classical") {
+    if (any(nullhyp == "classical")) {
         cvm <- chol2inv(fit$qr$qr)
         se <- sqrt(diag(cvm))
         tval <- fit$coefficients/se
@@ -151,7 +148,7 @@ gamma.net <- function (
         fit$pgreq <- pt(tval, fit$df.residual, lower.tail = FALSE)
         fit$pgreqabs <- 2 * pt(abs(tval), fit$df.residual, lower.tail = FALSE)
     }
-    else if (nullhyp %in% c("cugtie", "cugden", "cuguman")) {
+    else if (any(nullhyp %in% c("cugtie", "cugden", "cuguman"))) {
         repdist <- matrix(0, reps, nx)
         for (i in 1:nx) {
             gr <- g
@@ -176,7 +173,7 @@ gamma.net <- function (
         fit$pgreqabs <- apply(sweep(abs(fit$dist), 2, abs(fit$coefficients), 
             ">="), 2, mean)
     }
-    else if (nullhyp == "qapy") {
+    else if (any(nullhyp == "qapy")) {
         repdist <- matrix(0, reps, nx)
         gr <- g
         for (i in 1:reps) {
@@ -191,7 +188,7 @@ gamma.net <- function (
         fit$pgreqabs <- apply(sweep(abs(fit$dist), 2, abs(fit$coefficients), 
             ">="), 2, mean)
     }
-    else if (nullhyp == "qapx") {
+    else if (any(nullhyp == "qapx")) {
         repdist <- matrix(0, reps, nx)
         for (i in 1:nx) {
             gr <- g
@@ -208,7 +205,7 @@ gamma.net <- function (
         fit$pgreqabs <- apply(sweep(abs(fit$dist), 2, abs(fit$coefficients), 
             ">="), 2, mean)
     }
-    else if (nullhyp == "qapallx") {
+    else if (any(nullhyp == "qapallx")) {
         repdist <- matrix(0, reps, nx)
         gr <- g
         for (i in 1:reps) {

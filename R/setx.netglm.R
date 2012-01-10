@@ -1,5 +1,5 @@
 #' Set explanatory variables
-#' @S3method setx netglm
+#' @S3method setx gamma.net
 #' @param obj a 'zelig' object
 #' @param fn a list of key-value pairs specifying which function apply to
 #'           columns of the keys data-types
@@ -10,9 +10,11 @@
 #' @return a 'setx' object
 #' @export
 #' @author Matt Owen \email{mowen@@iq.harvard.edu}, Kosuke Imai, and Olivia Lau 
-setx.netglm <- function (object, fn = NULL, data = NULL, cond = FALSE, 
+setx.gamma.net <- function (object, fn = NULL, data = NULL, cond = FALSE, 
                          counter = NULL, ...) {
 
+  DATA <- ifelse(is.null(data), object$result$data, data)
+  DATA <- NULL
 
   mc <- match.call()
   if (class(object)[1]=="MI")
@@ -67,6 +69,7 @@ setx.netglm <- function (object, fn = NULL, data = NULL, cond = FALSE,
   }
   
   
+  fn <- list(numeric = mean, ordered = median, other = mode)
   # Testing From Here
   
   
@@ -78,11 +81,12 @@ setx.netglm <- function (object, fn = NULL, data = NULL, cond = FALSE,
   ## original data
   if (is.null(data))
     if (is.data.frame(object$data))
-      dta <- object$data
+      dta <- object$result$data
     else
-      dta <- eval(object$call$data, envir = env)
+      dta <- eval(object$result$call$data, envir = env)
   else
     dta <- as.data.frame(data)
+
   ## extract variables we need
   mf <- model.frame(tt, data = dta, na.action = na.pass)
   if(any(class(tt)=="multiple"))
@@ -168,6 +172,7 @@ setx.netglm <- function (object, fn = NULL, data = NULL, cond = FALSE,
   } else {
     maxl <- nrow(data)
   }
+
   opt <- vars[na.omit(pmatch(names(mc), vars))]
   if (length(opt) > 0)
     for (i in 1:length(opt)) {
@@ -189,8 +194,8 @@ setx.netglm <- function (object, fn = NULL, data = NULL, cond = FALSE,
       else
         data[,opt[i]] <- list(value)
     }
+
   data <- data[1:maxl,,drop = FALSE]
-  
   if (cond) {
     X <- model.frame(tt, data = dta)
     if (!is.null(counter)) {
@@ -206,12 +211,26 @@ setx.netglm <- function (object, fn = NULL, data = NULL, cond = FALSE,
     X <- as.data.frame(model.matrix(tt, data = data))
   }
 
+  # This is a heavily modified version of a setx object.
+  sx <- list(
+             name   = object$name,
+             call   = match.call(),
+             formula= formula(object),
+             matrix = X,
+             updated = NULL,
+             data   = DATA,
+             values = NULL,
+             fn     = fn,
+             cond   = cond,
+             new.data = data,
+             special.parameters = list(...),
+             label = object$label,
+             explan = NULL,
+             pred   = NULL
+             )
 
-  print(X)
 
-
-  return(X)
-
-
-
+  # set class and return
+  class(sx) <- c(object$name, "setx")
+  sx
 }
