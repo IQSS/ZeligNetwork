@@ -5,10 +5,11 @@
 #' @param data a data.frame 
 #' @return a list specifying '.function'
 #' @export
-zelig2ls.net <- function (formula, ..., data) {
+zelig2ls.net <- function (formula, ..., LF=NULL, data) {
   list(
-       .function = "",
+       .function = "normal.net",
        formula = formula,
-       data = data
+       data = data,
+       ...
        )
 }

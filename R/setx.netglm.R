@@ -4,6 +4,7 @@
 #' @S3method setx probit.net
 #' @S3method setx normal.net
 #' @S3method setx poisson.net
+#' @S3method setx ls.net
 #' @param obj a 'zelig' object
 #' @param fn a list of key-value pairs specifying which function apply to
 #'           columns of the keys data-types
@@ -15,7 +16,7 @@
 #' @export
 #' @author Matt Owen \email{mowen@@iq.harvard.edu}, Kosuke Imai, and Olivia Lau 
 setx.poisson.net <- setx.normal.net <- setx.probit.net <- setx.logit.net <- 
-  setx.gamma.net <- 
+  setx.ls.net <- setx.gamma.net <- 
 
   function (object, fn = NULL, data = NULL, cond = FALSE, counter = NULL, ...) {
 
