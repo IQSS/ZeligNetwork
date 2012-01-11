@@ -1,6 +1,7 @@
 #' Set explanatory variables
 #' @S3method setx gamma.net
 #' @S3method setx logit.net
+#' @S3method setx probit.net
 #' @param obj a 'zelig' object
 #' @param fn a list of key-value pairs specifying which function apply to
 #'           columns of the keys data-types
@@ -11,8 +12,9 @@
 #' @return a 'setx' object
 #' @export
 #' @author Matt Owen \email{mowen@@iq.harvard.edu}, Kosuke Imai, and Olivia Lau 
-setx.logit.net <- setx.gamma.net <- function (object, fn = NULL, data = NULL, cond = FALSE, 
-                         counter = NULL, ...) {
+setx.probit.net <- setx.logit.net <- setx.gamma.net <- 
+
+  function (object, fn = NULL, data = NULL, cond = FALSE, counter = NULL, ...) {
 
   DATA <- ifelse(is.null(data), object$result$data, data)
   DATA <- NULL

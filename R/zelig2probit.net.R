@@ -5,10 +5,18 @@
 #' @param data a data.frame 
 #' @return a list specifying '.function'
 #' @export
-zelig2probit.net <- function (formula, ..., data) {
+zelig2probit.net <- function (formula, LF="probit", ..., data) {
+  # Link function warning
+  if (!missing(LF))
+    warning("Specifying the link-function (\"LF\") is ignored for ",
+           "the \"probit.net\" model")
+
+  # Return
   list(
-       .function = "",
+       .function = "netbinom",
        formula = formula,
-       data = data
+       LF = "probit",
+       data = data,
+       ...
        )
 }

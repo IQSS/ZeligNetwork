@@ -1,7 +1,7 @@
 \name{zelig2probit.net}
 \alias{zelig2probit.net}
 \title{Interface between the Zelig Model probit...}
-\usage{zelig2probit.net(formula, ..., data)}
+\usage{zelig2probit.net(formula, LF="probit", ..., data)}
 \description{Interface between the Zelig Model probit.net and 
 the Pre-existing Model-fitting Method}
 \value{a list specifying '.function'}
