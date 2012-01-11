@@ -1,5 +1,6 @@
 #' Set explanatory variables
 #' @S3method setx gamma.net
+#' @S3method setx logit.net
 #' @param obj a 'zelig' object
 #' @param fn a list of key-value pairs specifying which function apply to
 #'           columns of the keys data-types
@@ -10,7 +11,7 @@
 #' @return a 'setx' object
 #' @export
 #' @author Matt Owen \email{mowen@@iq.harvard.edu}, Kosuke Imai, and Olivia Lau 
-setx.gamma.net <- function (object, fn = NULL, data = NULL, cond = FALSE, 
+setx.logit.net <- setx.gamma.net <- function (object, fn = NULL, data = NULL, cond = FALSE, 
                          counter = NULL, ...) {
 
   DATA <- ifelse(is.null(data), object$result$data, data)

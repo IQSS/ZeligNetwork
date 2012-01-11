@@ -7,7 +7,7 @@
 #' @export
 param.logit.net <- function(obj, num=1000, ...) {
   list(
-       coef = NULL,
-       linkinv = NULL
+       coef = mvrnorm(num, coef(obj), vcov(obj)),
+       fam = binomial(link="logit")
        )
 }
