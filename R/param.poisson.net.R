@@ -6,8 +6,9 @@
 #' @return a list specifying link, link-inverse, random samples, and ancillary parameters
 #' @export
 param.poisson.net <- function(obj, num=1000, ...) {
+  #print(obj$result$family)
   list(
-       coef = NULL,
-       linkinv = NULL
+       coef = mvrnorm(num, coef(obj), vcov(obj)),
+       fam = poisson()
        )
 }

@@ -7,8 +7,9 @@
 #' @export
 zelig2poisson.net <- function (formula, ..., data) {
   list(
-       .function = "",
+       .function = "poisson.net",
        formula = formula,
-       data = data
+       data = data,
+       ...
        )
 }

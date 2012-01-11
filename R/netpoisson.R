@@ -140,7 +140,6 @@ poisson.net <- function (
     #    else fit$ctable <- rbind(c(0, 0), fit$ctable)
     #    rownames(fit$ctable) <- c("0", "1")
     #}
-    nullhyp <- match.arg(nullhyp)
     if ((nullhyp %in% c("qap", "qapspp")) && (nx == 1)) 
         nullhyp <- "qapy"
     if (nullhyp == "classical") {
