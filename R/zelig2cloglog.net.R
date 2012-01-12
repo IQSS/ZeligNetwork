@@ -5,10 +5,18 @@
 #' @param data a data.frame 
 #' @return a list specifying '.function'
 #' @export
-zelig2cloglog.net <- function (formula, ..., data) {
+zelig2cloglog.net <- function (formula, ..., LF=NULL, data) {
+
+  # Link function warning
+  if (!missing(LF))
+    warning("Specifying the link-function (\"LF\") is ignored for ",
+           "the \"cloglog.net\" model")
+
   list(
-       .function = "",
+       .function = "netbinom",
        formula = formula,
-       data = data
+       LF = "cloglog",
+       data = data,
+       ...
        )
 }

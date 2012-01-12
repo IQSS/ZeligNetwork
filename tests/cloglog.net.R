@@ -2,7 +2,11 @@ library(ZeligNetwork)
 
 data(friendship)
 
-z.out <- zelig(friends ~ advice + prestige + perpower, model="cloglog.net", data=friendship)
+z.out <- zelig(
+               friends ~ advice + prestige + perpower, 
+               model = "cloglog.net", 
+               data = friendship
+               )
 
 summary(z.out)
 

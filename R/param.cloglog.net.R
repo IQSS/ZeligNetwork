@@ -6,8 +6,9 @@
 #' @return a list specifying link, link-inverse, random samples, and ancillary parameters
 #' @export
 param.cloglog.net <- function(obj, num=1000, ...) {
+  
   list(
-       coef = NULL,
-       linkinv = NULL
+       coef = mvrnorm(num, coef(obj), vcov(obj)),
+       fam = binomial(link="cloglog")
        )
 }
