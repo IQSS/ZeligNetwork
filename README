@@ -1,1 +1,4 @@
 ZeligNetwork: Network Regressions for Zelig 4
+Models: cloglog.net, gamma.net, logit.net, ls.net, normal.net, poisson.net, probit.net
+
+Contains regression for use in social network data.
