@@ -5,11 +5,12 @@ Websites
 * http://gking.harvard.edu/zelig/
 * http://zeligdev.github.com/
 
-'ZeligNetwork' contains seven models for working with social network data.
+"ZeligNetwork" contains seven models for working with social network data.
 Typical data-sets that work with these models are proximity (adjacency)
 matrices.
 
 The following models are included in this package:
+
 * "cloglog.net" : a log-log regression for binomial dependent variables on proximity matrices
 * "gamma.net" : a gamma regression for continuous, positive dependent variables on proximity matrices
 * "logit.net" : a logit regression for binomial depebdebt variables on proximity matrices
