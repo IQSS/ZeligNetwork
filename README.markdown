@@ -2,8 +2,8 @@
 ##Network Regression for Zelig 4
 
 Websites
-* http://gking.harvard.edu/zelig/
-* http://zeligdev.github.com/
+ * http://gking.harvard.edu/zelig/
+ * http://zeligdev.github.com/
 
 "ZeligNetwork" contains seven models for working with social network data.
 Typical data-sets that work with these models are proximity (adjacency)
