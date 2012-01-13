@@ -24,7 +24,7 @@ qi.logit.net <- function(obj, x=null, x1=null, y=null, num=1000, param=null) {
 
     # ensure 'setx' object is valid
     if (is.null(x) || is.na(x))
-      return(na)
+      return(NA)
 
     # construct eta, the value of the linear predictors before the 
     # inverse-link function is applied
