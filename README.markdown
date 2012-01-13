@@ -1,5 +1,5 @@
 #ZeligNetwork
-##Network Regression for Zelig 4
+##Network Regressions for Zelig 4
 
 Websites
 
