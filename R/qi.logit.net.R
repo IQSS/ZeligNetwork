@@ -21,7 +21,6 @@ qi.logit.net <- function(obj, x=null, x1=null, y=null, num=1000, param=null) {
   # @param x
   # @return ...
   compute.ev <- function (simulations, x) {
-
     # ensure 'setx' object is valid
     if (is.null(x) || is.na(x))
       return(NA)
@@ -44,8 +43,10 @@ qi.logit.net <- function(obj, x=null, x1=null, y=null, num=1000, param=null) {
   ev2 <- compute.ev(beta, x1)
 
   list(
-       "expected value (for x): e(y|x)" = ev1,
-       "expected value (for x1): e(y|x1)" = ev2,
-       "first differences: e(y|x1)-e(y|x)" = ev2 - ev1
+       "Expected Value (for X): E(Y|X)" = ev1,
+       "Predicted Value (for X): E(Y|X)" = NA,
+       "Expected Value (for X1): E(Y|X1)" = ev2,
+       "Predicted Value (for X): E(Y|X)" = NA,
+       "First Differences: E(Y|X1)-E(Y|X)" = ev2 - ev1
        )
 }

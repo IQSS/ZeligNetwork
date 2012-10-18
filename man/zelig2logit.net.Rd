@@ -1,10 +1,22 @@
 \name{zelig2logit.net}
 \alias{zelig2logit.net}
-\title{Interface between the Zelig Model logit...}
-\usage{zelig2logit.net(formula, LF="logit", ..., data)}
-\description{Interface between the Zelig Model logit.net and 
+\title{Interface between the Zelig Model logit.net and
 the Pre-existing Model-fitting Method}
-\value{a list specifying '.function'}
-\arguments{\item{formula}{a formula}
-\item{...}{additonal parameters}
-\item{data}{a data.frame}}
+\usage{
+  zelig2logit.net(formula, LF = "logit", ..., data)
+}
+\arguments{
+  \item{formula}{a formula}
+
+  \item{...}{additonal parameters}
+
+  \item{data}{a data.frame}
+}
+\value{
+  a list specifying '.function'
+}
+\description{
+  Interface between the Zelig Model logit.net and the
+  Pre-existing Model-fitting Method
+}
+

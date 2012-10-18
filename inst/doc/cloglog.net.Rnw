@@ -50,9 +50,8 @@ Load the sample data (see {\tt ?friendship} for details on the structure of the 
  
 <<echo=TRUE, results=hide, fig=FALSE>>= 
 data(friendship) 
- 
- 
 @ 
+
 Estimate model: 
  
 <<echo=TRUE, results=hide, fig=FALSE>>= 
