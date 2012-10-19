@@ -12,8 +12,6 @@ plot.sim.cloglog.net <- function (x, ...) {
 
   # Determine whether two "Expected Values" qi's exist
   both.ev.exist <- all(ev.titles %in% names(qi))
-  # Determine whether two "Predicted Values" qi's exist
-  both.pv.exist <- all(pv.titles %in% names(qi))
 
   # Color of x should always be this pertty blue
   color.x <- rgb(242, 122, 94, maxColorValue=255)
@@ -26,38 +24,29 @@ plot.sim.cloglog.net <- function (x, ...) {
     return(par(old.par))
   }
   else if (is.null(x$x1) || is.na(x$x1)) {
-    panels <- matrix(1:2, 2, 1)
+    panels <- matrix(1, 1, 1)
 
     # The plotting device:
     # +--------+
     # |   1    |
     # +--------+
-    # |   2    |
-    # +--------+
   }
   else {
+    panels <- matrix(c(1, 2, 3, 3), ncol=2, nrow=2, byrow = TRUE)
 
-    panels <- matrix(c(1:5, 5), ncol=2, nrow=3, byrow = TRUE)
-
-    panels <- if (xor(both.ev.exist, both.pv.exist))
-      rbind(panels, c(6, 6))
-    else if (both.ev.exist && both.pv.exist)
-      rbind(panels, c(6, 7))
-    else
-      panels
+    if (both.ev.exist)
+      panels <- rbind(panels, c(3, 3, 4, 4))
 
 
-    # the plotting device:
+    # The plotting device:
     #
     # +-----------+    +-----------+
     # |  1  |  2  |    |  1  |  2  |
-    # +-----+-----+    +-----+-----+
-    # |  3  |  4  |    |  3  |  4  |
     # +-----+-----+ OR +-----+-----+
-    # |     5     |    |     5     |
+    # |     3     |    |     3     |
     # +-----------+    +-----------+
-    # |  6  |  7  |    |     6     |
-    # +-----+-----+    +-----+-----+
+    # |     4     |
+    # +-----------+
   }
 
   #
@@ -69,25 +58,12 @@ plot.sim.cloglog.net <- function (x, ...) {
     fd  = "First Differences: E(Y|X1)-E(Y|X)"
     )
 
-  message("I KNOW YOU ARE THE WORST THING IN THE WORLD <<<")
-  print(length(qi[[titles$ev]]))
-  print(length(qi[[titles$ev1]]))
-  print(length(qi[[titles$fd]]))
-  # plot(qi[[titles$pv]], main = titles$ev, col = color.x, line.col = "black")
-  # Zelig:::simulations.plot(qi[[titles$ev1]], main = titles$ev, col = color.x, line.col = "black")
-  #Zelig:::simulations.plot(qi[[titles$fd]], main = titles$fd, col = color.mixed, line.col = "black")
-  message(">>>")
 
-  q()
+  Zelig:::simulations.plot(qi[[titles$ev]], main = titles$ev, col = color.x, line.col = "black")
 
-
-  if (both.pv.exist) {
-    simulations.plot(
-      qi[["Predicted Values: Y|X"]],
-      qi[["Predicted Values (for X1): Y|X1"]],
-      main = "Comparison of Y|X and Y|X1",
-      col = c(color.x, color.x1),
-      line.col = "black")
+  if (!is.null(x$x1) && !is.na(x$x1)) {
+    Zelig:::simulations.plot(qi[[titles$ev1]], main = titles$ev, col = color.x, line.col = "black")
+    Zelig:::simulations.plot(qi[[titles$fd]], main = titles$fd, col = color.mixed, line.col = "black")
   }
 
   if (both.ev.exist) {
@@ -98,6 +74,8 @@ plot.sim.cloglog.net <- function (x, ...) {
       col = c(color.x, color.x1),
       line.col = "black")
   }
+
+  message(">>>")
 
   # Restore old state
   par(old.par)
