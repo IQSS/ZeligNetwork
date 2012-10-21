@@ -75,8 +75,6 @@ plot.sim.cloglog.net <- function (x, ...) {
       line.col = "black")
   }
 
-  message(">>>")
-
   # Restore old state
   par(old.par)
 
