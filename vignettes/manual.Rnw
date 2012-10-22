@@ -35,7 +35,7 @@ library(ZeligNetwork)
  
 Use network complementary log log regression analysis for a dependent variable that is a binary valued proximity matrix (a.k.a. sociomatricies, adjacency matrices, or matrix representations of directed graphs).  
  
-\subsubsection{Syntax} 
+\subsection{Syntax} 
 \begin{verbatim} 
 > z.out <- zelig(y ~ x1 + x2, model = "cloglog.net", data = mydata)  
 > x.out <- setx(z.out) 
@@ -43,7 +43,7 @@ Use network complementary log log regression analysis for a dependent variable t
 \end{verbatim} 
  
  
-\subsubsection{Examples} 
+\subsection{Examples} 
 \begin{enumerate} 
 \item Basic Example 
  
@@ -109,7 +109,7 @@ plot(s.out)
  
  
  
-\subsubsection{Model} 
+\subsection{Model} 
 The {\tt cloglog.net} model performs a complementary log log regression of the proximity matrix $\mathbf{Y}$, a $m \times m$ matrix representing network ties, on a set of proximity matrices $\mathbf{X}$. This network regression model is directly analogous to standard complementary log log regression element-wise on the appropriately vectorized matrices. Proximity matrices are vectorized by creating $Y$, a $m^2 \times 1$ vector to represent the proximity matrix. The vectorization which produces the $Y$ vector from the $\mathbf{Y}$ matrix is performed by simple row-concatenation of $\mathbf{Y}$. For example, if $\mathbf{Y}$ is a $15 \times 15$ matrix, the $\mathbf{Y}_{1,1}$ element is the first element of $Y$, and the $\mathbf{Y}_{2,1}$ element is the second element of $Y$ and so on. Once the input matrices are vectorized, standard complementary log log regression is performed.  
  
 Let $Y_{i}$ be the binary dependent variable, produced by vectorizing a binary proximity matrix, for observation $i$ which takes the value of either 0 or 1. 
@@ -127,7 +127,7 @@ where $x_i$ the vector of $k$ explanatory variables for observation $i$ and $\be
 \end{itemize} 
  
  
-\subsubsection{Quantities of Interest} 
+\subsection{Quantities of Interest} 
 The quantities of interest for the network complementary log log regression are the same as those for the standard complementary log log regression.  
 \begin{itemize} 
 \item The expected values ({\tt qi\$ev}) for the {\tt cloglog.nett} model are simulations of the predicted probability of a success:   
@@ -145,7 +145,7 @@ FD = \text{Pr}(Y = 1 | x_{1}) - \text{Pr}(Y = 1| x)
 \end{itemize} 
  
  
-\subsubsection{Output Values} 
+\subsection{Output Values} 
  
 The output of each Zelig command contains useful information which you may view. For example, you run \verb{ z.out <- zelig(y ~ x, model = "cloglog.net", data){, then you may examine the available information in {\tt z.out} by using {\tt names(z.out)}, see the coefficients by using {\tt z.out\$coefficients}, and a default summary of information through {\tt summary(z.out)}. Other elements available through the {\tt \$} operator are listed below.  
 \begin{itemize} 
@@ -194,14 +194,14 @@ The network complementary log log regression is part of the {\tt netglm} package
  
 Use the network gamma regression model if you have a positive-valued dependent variable that is a binary valued proximity matrix (a.k.a. sociomatricies, adjacency matrices, or matrix representations of directed graphs). The gamma distribution assumes that all waiting times are complete by the end of the study (censoring is not allowed). 
  
-\subsubsection{Syntax} 
+\subsection{Syntax} 
 \begin{verbatim} 
 > z.out <- zelig(y ~ x1 + x2, model = "gamma.net", data = mydata)  
 > x.out <- setx(z.out) 
 > s.out <- sim(z.out, x = x.out) 
 \end{verbatim} 
  
-\subsubsection{Additional Inputs} 
+\subsection{Additional Inputs} 
  
 In addition to the standard inputs, {\tt zelig()} takes the following additional options for network gamma regression: 
  
@@ -209,7 +209,7 @@ In addition to the standard inputs, {\tt zelig()} takes the following additional
 \item {\tt LF}: specifies the link function to be used for the network gamma regression. Default is {\tt LF="inverse"}, but {\tt LF} can also be set to {\tt "identity"} or {\tt "log"} by the user. 
 \end{itemize} 
  
-\subsubsection{Examples} 
+\subsection{Examples} 
 \begin{enumerate} 
 \item Basic Example 
  
@@ -274,7 +274,7 @@ plot(s.out)
  
  
  
-\subsubsection{Model} 
+\subsection{Model} 
 The {\tt gamma.net} model performs a gamma regression of the proximity matrix $\mathbf{Y}$, a $m \times m$ matrix representing network ties, on a set of proximity matrices $\mathbf{X}$. This network regression model is directly analogous to standard gamma regression element-wise on the appropriately vectorized matrices. Proximity matrices are vectorized by creating $Y$, a $m^2 \times 1$ vector to represent the proximity matrix. The vectorization which produces the $Y$ vector from the $\mathbf{Y}$ matrix is performed by simple row-concatenation of $\mathbf{Y}$. For example, if $\mathbf{Y}$ is a $15 \times 15$ matrix, the $\mathbf{Y}_{1,1}$ element is the first element of $Y$, and the $\mathbf{Y}_{2,1}$ element is the second element of $Y$ and so on. Once the input matrices are vectorized, standard gamma regression is performed.  
  
 Let $Y_{i}$ be the dependent variable, produced by vectorizing a binary proximity matrix, for observation $i$. 
@@ -293,7 +293,7 @@ for $\alpha, \lambda_i, y_i > 0$.
 \end{itemize} 
  
  
-\subsubsection{Quantities of Interest} 
+\subsection{Quantities of Interest} 
 The quantities of interest for the network gamma regression are the same as those for the standard gamma regression.  
 \begin{itemize} 
 \item The expected values ({\tt qi\$ev}) are simulations of the mean of the stochastic component given draws of $\alpha$ and $\beta$ from their posteriors:    
@@ -310,7 +310,7 @@ FD = \text{Pr}(Y | x_{1}) - \text{Pr}(Y | x)
 \end{itemize} 
  
  
-\subsubsection{Output Values} 
+\subsection{Output Values} 
  
 The output of each Zelig command contains useful information which you may view. For example, you run \verb{ z.out <- zelig(y ~ x, model = "gamma.net", data){, then you may examine the available information in {\tt z.out} by using {\tt names(z.out)}, see the coefficients by using {\tt z.out\$coefficients}, and a default summary of information through {\tt summary(z.out)}. Other elements available through the {\tt \$} operator are listed below.  
 \begin{itemize} 
@@ -358,7 +358,7 @@ The network gamma regression is part of the {\tt netglm} package by Skyler J. Cr
 
 Use network logistic regression analysis for a dependent variable that is a binary valued proximity matrix (a.k.a. sociomatricies, adjacency matrices, or matrix representations of directed graphs). 
 
-\subsubsection{Syntax}
+\subsection{Syntax}
 \begin{verbatim}
 > z.out <- zelig(y ~ x1 + x2, model = "logit.net", data = mydata) 
 > x.out <- setx(z.out)
@@ -367,7 +367,7 @@ Use network logistic regression analysis for a dependent variable that is a bina
 
 
 
-\subsubsection{Examples}
+\subsection{Examples}
 \begin{enumerate}
 \item Basic Example
 
@@ -437,7 +437,7 @@ plot(s.out)
 
 
 
-\subsubsection{Model}
+\subsection{Model}
 The {\tt logit.net} model performs a logistic regression of the proximity matrix $\mathbf{Y}$, a $m \times m$ matrix representing network ties, on a set of proximity matrices $\mathbf{X}$. This network regression model is directly analogous to standard logistic regression element-wise on the appropriately vectorized matrices. Proximity matrices are vectorized by creating $Y$, a $m^2 \times 1$ vector to represent the proximity matrix. The vectorization which produces the $Y$ vector from the $\mathbf{Y}$ matrix is performed by simple row-concatenation of $\mathbf{Y}$. For example, if $\mathbf{Y}$ is a $15 \times 15$ matrix, the $\mathbf{Y}_{1,1}$ element is the first element of $Y$, and the $\mathbf{Y}_{2,1}$ element is the second element of $Y$ and so on. Once the input matrices are vectorized, standard logistic regression is performed. 
 
 Let $Y_{i}$ be the binary dependent variable, produced by vectorizing a binary proximity matrix, for observation $i$ which takes the value of either 0 or 1.
@@ -456,7 +456,7 @@ where $x_{i}$ is the vector of $k$ covariates for observation $i$ and $\beta$ is
 \end{itemize}
 
 
-\subsubsection{Quantities of Interest}
+\subsection{Quantities of Interest}
 The quantities of interest for the network logistic regression are the same as those for the standard logistic regression. 
 \begin{itemize}
 \item The expected values ({\tt qi\$ev}) for the {\tt logit.net} model are simulations of the predicted probability of a success:  
@@ -474,7 +474,7 @@ FD = \text{Pr}(Y = 1 | x_{1}) - \text{Pr}(Y = 1| x)
 \end{itemize}
 
 
-\subsubsection{Output Values}
+\subsection{Output Values}
 
 The output of each Zelig command contains useful information which you may view. For example, you run \verb{ z.out <- zelig(y ~ x, model = "logit.net", data){, then you may examine the available information in {\tt z.out} by using {\tt names(z.out)}, see the coefficients by using {\tt z.out\$coefficients}, and a default summary of information through {\tt summary(z.out)}. Other elements available through the {\tt \$} operator are listed below. 
 \begin{itemize}
@@ -526,14 +526,14 @@ best linear predictor when the dependent variable is a
 continuously-valued proximity matrix (a.k.a.\ sociomatrices, adjacency
 matrices, or matrix representations of directed graphs). 
 
-\subsubsection{Syntax}
+\subsection{Syntax}
 \begin{verbatim}
 > z.out <- zelig(y ~  x1 + x2, model = "ls.net", data = mydata)
 > x.out <- setx(z.out)
 > s.out <- sim(z.out, x = x.out)
 \end{verbatim}
 
-\subsubsection{Examples}
+\subsection{Examples}
 \begin{enumerate}
 \item Basic Example with First Differences 
 
@@ -579,7 +579,7 @@ Var3 on the outcome variable.
 \end{center}
 \end{enumerate}
 
-\subsubsection{Model}
+\subsection{Model}
 The {\tt ls.net} model performs a least squares regression of the
 sociomatrix $\mathbf{Y}$, a $m \times m$ matrix representing network
 ties, on a set of sociomatrices $\mathbf{X}$. This network regression
@@ -610,7 +610,7 @@ The least squares estimator is the best linear predictor of a
 dependent variable given $x_{i}$, and minimizes the sum of squared
 errors $\sum_{i = 1}^{n} (Y_{i} - x_{i}\beta)^{2}$.
 
-\subsubsection{Quantities of Interest}
+\subsection{Quantities of Interest}
 The quantities of interest for the network least squares regression
 are the same as those for the standard least squares regression.
 \begin{itemize}
@@ -627,7 +627,7 @@ FD = E(Y | x_{1}) - E(Y | x)
 \end{equation*}
 \end{itemize}
 
-\subsubsection{Output Values}
+\subsection{Output Values}
 
 The output of each Zelig command contains useful information which you
 may view. For example, you run {\tt z.out <- zelig(y ~ x,
@@ -695,14 +695,14 @@ Carter T. Butts \citep{ButCar01}.In addition, advanced users may wish to refer t
 
 The Network Normal regression model is a close variant of the more standard least squares regression model (see {\tt netlm}). Both models specify a continuous proximity matrix (a.k.a. sociomatricies, adjacency matrices, or matrix representations of directed graphs) dependent variable as a linear function of a set of explanatory variables. The network Normal model reports maximum likelihood (rather than least squares) estimates. The two models differ only in their estimate for the stochastic parameter $\sigma$.
 
-\subsubsection{Syntax}
+\subsection{Syntax}
 \begin{verbatim}
 > z.out <- zelig(y ~ x1 + x2, model = "normal.net", data = mydata) 
 > x.out <- setx(z.out)
 > s.out <- sim(z.out, x = x.out)
 \end{verbatim}
 
-\subsubsection{Additional Inputs}
+\subsection{Additional Inputs}
 
 In addition to the standard inputs, {\tt zelig()} takes the following additional options for network normal regression:
 
@@ -710,7 +710,7 @@ In addition to the standard inputs, {\tt zelig()} takes the following additional
 \item {\tt LF}: specifies the link function to be used for the network normal regression. Default is {\tt LF="identity"}, but {\tt LF} can also be set to {\tt "log"} or {\tt "inverse"} by the user.
 \end{itemize}
 
-\subsubsection{Examples}
+\subsection{Examples}
 \begin{enumerate}
 \item Basic Example
 
@@ -755,7 +755,7 @@ plot(s.out)
 
 
 
-\subsubsection{Model}
+\subsection{Model}
 The {\tt normal.net} model performs a Normal regression of the proximity matrix $\mathbf{Y}$, a $m \times m$ matrix representing network ties, on a set of proximity matrices $\mathbf{X}$. This network regression model is directly analogous to standard Normal regression element-wise on the appropriately vectorized matrices. Proximity matrices are vectorized by creating $Y$, a $m^2 \times 1$ vector to represent the proximity matrix. The vectorization which produces the $Y$ vector from the $\mathbf{Y}$ matrix is performed by simple row-concatenation of $\mathbf{Y}$. For example, if $\mathbf{Y}$ is a $15 \times 15$ matrix, the $\mathbf{Y}_{1,1}$ element is the first element of $Y$, and the $\mathbf{Y}_{2,1}$ element is the second element of $Y$ and so on. Once the input matrices are vectorized, standard Normal regression is performed. 
 
 Let $Y_{i}$ be the continuous dependent variable, produced by vectorizing a continuous proximity matrix, for observation $i$.  
@@ -772,7 +772,7 @@ where $ x_i$ is the vector of $k$ explanatory variables and $\beta$ is the vecto
 \end{itemize}
 
 
-\subsubsection{Quantities of Interest}
+\subsection{Quantities of Interest}
 The quantities of interest for the network Normal regression are the same as those for the standard Normal regression. 
 \begin{itemize}
 \item The expected value ({\tt qi\$ev}) for the {\tt normal.net} model is the mean of simulations from the stochastic component,  
@@ -790,7 +790,7 @@ FD = \text{Pr}(Y| x_{1}) - \text{Pr}(Y| x)
 \end{itemize}
 
 
-\subsubsection{Output Values}
+\subsection{Output Values}
 
 The output of each Zelig command contains useful information which you may view. For example, you run \verb{ z.out <- zelig(y ~ x, model = "normal.net", data){, then you may examine the available information in {\tt z.out} by using {\tt names(z.out)}, see the coefficients by using {\tt z.out\$coefficients}, and a default summary of information through {\tt summary(z.out)}. Other elements available through the {\tt \$} operator are listed below. 
 \begin{itemize}
@@ -841,7 +841,7 @@ Matrix Dependent Variables
 Use the ordinal logit regression model if your dependent variable is
 ordered and categorical, either in the form of integer values or character strings.  
 
-\subsubsection{Syntax}
+\subsection{Syntax}
 
 \begin{verbatim}
 > z.out <- zelig(as.factor(Y) ~ X1 + X2, model = "poisson.net", data = mydata)
@@ -858,7 +858,7 @@ estimating the model through {\tt zelig()}.  See Section \ref{factors}
 for more information on creating ordered factors and Example
 \ref{ord.fact} below.
 
-\subsubsection{Example}
+\subsection{Example}
 
 \begin{enumerate}
 
@@ -915,7 +915,7 @@ Generate simulated fitted values and first differences, and view the results:
 @ 
 \end{enumerate}
 
-\subsubsection{Model}
+\subsection{Model}
 
 Let $Y_i$ be the ordered categorical dependent variable for
 observation $i$ that takes one of the integer values from $1$ to $J$
@@ -951,7 +951,7 @@ where $J$ is the total number of categories.
   \end{equation*}
 \end{itemize}
 
-\subsubsection{Quantities of Interest} 
+\subsection{Quantities of Interest} 
 
 \begin{itemize}
 \item The expected values ({\tt qi\$ev}) for the ordinal logit model
@@ -994,7 +994,7 @@ number of treated observations in category $j$.
 
 \end{itemize}
 
-\subsubsection{Output Values}
+\subsection{Output Values}
 
 The output of each Zelig command contains useful information which you
 may view.  For example, if you run \texttt{z.out <- zelig(y \~\,
@@ -1068,7 +1068,7 @@ The network poisson regression is part of the {\tt netglm} package by Skyler J. 
 
 Use network probit regression analysis for a dependent variable that is a binary valued proximity matrix (a.k.a. sociomatricies, adjacency matrices, or matrix representations of directed graphs). 
 
-\subsubsection{Syntax}
+\subsection{Syntax}
 \begin{verbatim}
 > z.out <- zelig(y ~ x1 + x2, model = "probit.net", data = mydata) 
 > x.out <- setx(z.out)
@@ -1077,7 +1077,7 @@ Use network probit regression analysis for a dependent variable that is a binary
 
 
 
-\subsubsection{Examples}
+\subsection{Examples}
 \begin{enumerate}
 \item Basic Example
 
@@ -1144,7 +1144,7 @@ plot(s.out)
 
 
 
-\subsubsection{Model}
+\subsection{Model}
 The {\tt probit.net} model performs a probit regression of the proximity matrix $\mathbf{Y}$, a $m \times m$ matrix representing network ties, on a set of proximity matrices $\mathbf{X}$. This network regression model is directly analogous to standard probit regression element-wise on the appropriately vectorized matrices. Proximity matrices are vectorized by creating $Y$, a $m^2 \times 1$ vector to represent the proximity matrix. The vectorization which produces the $Y$ vector from the $\mathbf{Y}$ matrix is performed by simple row-concatenation of $\mathbf{Y}$. For example, if $\mathbf{Y}$ is a $15 \times 15$ matrix, the $\mathbf{Y}_{1,1}$ element is the first element of $Y$, and the $\mathbf{Y}_{2,1}$ element is the second element of $Y$ and so on. Once the input matrices are vectorized, standard probit regression is performed. 
 
 Let $Y_{i}$ be the binary dependent variable, produced by vectorizing a binary proximity matrix, for observation $i$ which takes the value of either 0 or 1.
@@ -1162,7 +1162,7 @@ where $ \pmb{\Phi}(\mu)$ is the cumulative distribution function of the Normal d
 \end{itemize}
 
 
-\subsubsection{Quantities of Interest}
+\subsection{Quantities of Interest}
 The quantities of interest for the network probit regression are the same as those for the standard probit regression. 
 \begin{itemize}
 \item The expected values ({\tt qi\$ev}) for the {\tt probit.net} model are simulations of the predicted probability of a success:  
@@ -1180,7 +1180,7 @@ FD = \text{Pr}(Y = 1 | x_{1}) - \text{Pr}(Y = 1| x)
 \end{itemize}
 
 
-\subsubsection{Output Values}
+\subsection{Output Values}
 
 The output of each Zelig command contains useful information which you may view. For example, you run \verb{ z.out <- zelig(y ~ x, model = "probit.net", data){, then you may examine the available information in {\tt z.out} by using {\tt names(z.out)}, see the coefficients by using {\tt z.out\$coefficients}, and a default summary of information through {\tt summary(z.out)}. Other elements available through the {\tt \$} operator are listed below. 
 \begin{itemize}

@@ -14,10 +14,13 @@
 #' @return Some kind of model
 #' @export
 normal.net <- function (
-                        formula, data, LF= "identity", 
+                        formula,
+                        data,
+                        LF= "identity", 
                         family=gaussian(link=LF), 
                         ..., 
-                        mode = "digraph", diag = FALSE, 
+                        mode = "digraph",
+                        diag = FALSE, 
                         nullhyp = NULL, 
                         tol = 1e-07, 
                         reps = 1000

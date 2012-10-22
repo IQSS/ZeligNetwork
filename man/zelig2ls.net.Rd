@@ -10,6 +10,8 @@ the Pre-existing Model-fitting Method}
 
   \item{...}{additonal parameters}
 
+  \item{LF}{a link function}
+
   \item{data}{a data.frame}
 }
 \value{

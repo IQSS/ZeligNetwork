@@ -10,6 +10,9 @@ the Pre-existing Model-fitting Method}
 
   \item{...}{additonal parameters}
 
+  \item{LF}{a link function. This parameter is not allowed
+  for cloglog}
+
   \item{data}{a data.frame}
 }
 \value{

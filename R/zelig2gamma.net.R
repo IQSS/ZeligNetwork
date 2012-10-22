@@ -5,11 +5,12 @@
 #' @param data a data.frame 
 #' @return a list specifying '.function'
 #' @export
-zelig2gamma.net <- function (formula, ..., data) {
+zelig2gamma.net <- function (formula, LF = "inverse", ..., data) {
   list(
        .function = "netgamma",
        formula = formula,
        data = data,
+       LF = LF,
        ...
        )
 }
