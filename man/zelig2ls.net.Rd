@@ -3,7 +3,7 @@
 \title{Interface between the Zelig Model ls.net and
 the Pre-existing Model-fitting Method}
 \usage{
-  zelig2ls.net(formula, ..., LF = NULL, data)
+  zelig2ls.net(formula, ..., LF = "identity", data)
 }
 \arguments{
   \item{formula}{a formula}

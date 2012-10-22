@@ -2,7 +2,7 @@ library(ZeligNetwork)
 
 data(sna.ex)
 
-z.out <- zelig(Var1 ~ Var3, model = "ls.net", data=sna.ex)
+z.out <- zelig(Var1 ~ Var2 + Var3 + Var4, model = "ls.net", data=sna.ex)
 
 summary(z.out)
 

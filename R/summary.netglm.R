@@ -1,13 +1,4 @@
-#' Network Regression Summaries for Fitted Models
-#'
-#' Return the summary of model fitted using any of the ``netglm'' functions.
 #' @S3method summary netglm
-#' @param object A ``netglm'' object
-#' @param dispersion Specifies the dispersion (???)
-#' @param correlation Specifies the correlation (???)
-#' @param symbolic.cor Specifies the symbolic.cor (???)
-#' @param ... Other parameters
-#' @return An object of "summary.glm"
 summary.netglm <- function (
                             object, 
                             dispersion = NULL, 

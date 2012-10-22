@@ -1,7 +1,7 @@
 library(ZeligNetwork)
 
 data(friendship)
-z.out <- zelig(count ~ perpower, model="poisson.net", data=friendship)
+z.out <- zelig(count ~ advice + prestige + perpower, model="poisson.net", data=friendship)
 
 summary(z.out)
 

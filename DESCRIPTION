@@ -13,13 +13,6 @@ Depends:
     network,
     sna
 Collate:
-    'describe.cloglog.net.R'
-    'describe.gamma.net.R'
-    'describe.logit.net.R'
-    'describe.ls.net.R'
-    'describe.normal.net.R'
-    'describe.poisson.net.R'
-    'describe.probit.net.R'
     'gamma.net.R'
     'netbinom.R'
     'netlm.R'
@@ -53,3 +46,4 @@ Collate:
     'ZeligNetwork-package.R'
     'common-methods.R'
     'plots.R'
+    'describes.R'

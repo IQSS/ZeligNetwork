@@ -3,7 +3,7 @@ library(ZeligNetwork)
 data(friendship)
 
 z.out <- zelig(
-               friends ~ advice + prestige + perpower, 
+               friends ~ perpower, 
                model="logit.net", 
                data=friendship
                )

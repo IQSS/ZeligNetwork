@@ -5,6 +5,8 @@ data(friendship)
 # Fit the model
 z.out <- zelig(per ~ perpower, LF="inverse", model="gamma.net", data=friendship)
 
+#Summarize fitted model
+
 # Set explanatory variables
 x.low <- setx(z.out)
 x.high <- setx(z.out)

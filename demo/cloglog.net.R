@@ -3,13 +3,21 @@ library(ZeligNetwork)
 data(friendship)
 
 z.out <- zelig(
-               perpower ~ prestige, 
-               LF="identity", 
-               model="normal.net", 
-               data=friendship
+               friends ~ advice + prestige + perpower, 
+               model = "cloglog.net", 
+               data = friendship
                )
+
+summary(z.out)
 
 x.high <- setx(z.out, perpower = quantile(friendship$perpower, prob=0.75))
 x.low <- setx(z.out, perpower = quantile(friendship$perpower, prob=0.25))
 
+s.out <- sim(z.out, x = x.high)
+
+summary(s.out)
+
+plot(s.out)
+
 s.out <- sim(z.out, x = x.high, x1 = x.low)
+plot(s.out)

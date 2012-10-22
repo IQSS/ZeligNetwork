@@ -2,6 +2,7 @@
 #' the Pre-existing Model-fitting Method
 #' @param formula a formula
 #' @param ... additonal parameters
+#' @param LF a character string specifying an inverse-link function
 #' @param data a data.frame 
 #' @return a list specifying '.function'
 #' @export
