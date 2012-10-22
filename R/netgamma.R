@@ -1,6 +1,6 @@
 #' Fitting C-log-log Network Models
 #'
-#' Fit social network data.
+#' Fit social network data with a gamma egression.
 #' @param formula formula
 #' @param data data.frame
 #' @param LF character-string

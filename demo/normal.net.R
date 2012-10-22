@@ -2,18 +2,27 @@ library(ZeligNetwork)
 
 data(friendship)
 
+# fit model
 z.out <- zelig(
                perpower ~ friends + advice + prestige, 
                LF="identity", 
                model="normal.net", 
                data=friendship
                )
-
 summary(z.out)
 
-x.high <- setx(z.out, perpower = quantile(friendship$perpower, prob=0.75))
-x.low <- setx(z.out, perpower = quantile(friendship$perpower, prob=0.25))
+user.prompt()
 
-s.out <- sim(z.out, x = x.high, x1 = x.low)
+# set explanatory variables
+x <- setx(z.out)
+
+user.prompt()
+
+# simulate quantities of interest
+s.out <- sim(z.out, x = x)
 summary(s.out)
-#plot(s.out)
+
+user.prompt()
+
+# plot quantities of interest
+plot(s.out)

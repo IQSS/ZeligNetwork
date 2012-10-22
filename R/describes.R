@@ -60,7 +60,7 @@ describe.ls.net <- function(...) {
 describe.normal.net <- function(...) {
   list(
        authors = "Skyler J. Cranmer",
-       text = "Social Network Least Squares Regression for Continuous Dependent Variables",
+       text = "Social Network Gaussian Regression for Continuous Dependent Variables",
        year = 2012
        )
 }

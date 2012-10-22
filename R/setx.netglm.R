@@ -5,7 +5,6 @@
 #' @S3method setx poisson.net
 #' @S3method setx cloglog.net
 #' @S3method setx ls.net
-#' @importFrom Zelig setx
 setx.poisson.net <- setx.normal.net <- setx.probit.net <- setx.logit.net <- 
   setx.cloglog.net <- setx.ls.net <- setx.gamma.net <- 
 

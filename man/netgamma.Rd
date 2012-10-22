@@ -31,6 +31,6 @@
   an object of ``netglm'' class
 }
 \description{
-  Fit social network data.
+  Fit social network data with a gamma egression.
 }
 
