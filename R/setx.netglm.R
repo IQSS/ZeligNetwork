@@ -1,4 +1,3 @@
-#' Set explanatory variables
 #' @S3method setx gamma.net
 #' @S3method setx logit.net
 #' @S3method setx probit.net
@@ -6,27 +5,18 @@
 #' @S3method setx poisson.net
 #' @S3method setx cloglog.net
 #' @S3method setx ls.net
-#' @param obj a 'zelig' object
-#' @param fn a list of key-value pairs specifying which function apply to
-#'           columns of the keys data-types
-#' @param data a data.frame
-#' @param cond ignored
-#' @param ... parameters specifying what to explicitly set each column as. This
-#'            is used to produce counterfactuals
-#' @return a 'setx' object
-#' @export
-#' @author Matt Owen \email{mowen@@iq.harvard.edu}, Kosuke Imai, and Olivia Lau 
+#' @importFrom Zelig setx
 setx.poisson.net <- setx.normal.net <- setx.probit.net <- setx.logit.net <- 
   setx.cloglog.net <- setx.ls.net <- setx.gamma.net <- 
 
-  function (object, fn = NULL, data = NULL, cond = FALSE, counter = NULL, ...) {
+  function (obj, fn = NULL, data = NULL, cond = FALSE, counter = NULL, ...) {
 
-  DATA <- ifelse(is.null(data), object$result$data, data)
+  DATA <- ifelse(is.null(data), obj$result$data, data)
   DATA <- NULL
 
   mc <- match.call()
-  if (class(object)[1]=="MI")
-    object <- object[[1]]
+  if (class(obj)[1]=="MI")
+    object <- obj[[1]]
   mode <- function(x){
     tb <- tapply(x, x, length)
     if(is.factor(x))
@@ -81,17 +71,17 @@ setx.poisson.net <- setx.normal.net <- setx.probit.net <- setx.logit.net <-
   # Testing From Here
   
   
-  tt <- terms(object)
+  tt <- terms(obj)
   tt.attr <- attributes(tt)
   env <- tt.attr$.Environment
   if (is.null(env))
     env <- parent.frame()
   ## original data
   if (is.null(data))
-    if (is.data.frame(object$data))
-      dta <- object$result$data
+    if (is.data.frame(obj$data))
+      dta <- obj$result$data
     else
-      dta <- eval(object$result$call$data, envir = env)
+      dta <- eval(obj$result$call$data, envir = env)
   else
     dta <- as.data.frame(data)
 
@@ -221,9 +211,9 @@ setx.poisson.net <- setx.normal.net <- setx.probit.net <- setx.logit.net <-
 
   # This is a heavily modified version of a setx object.
   sx <- list(
-             name   = object$name,
+             name   = obj$name,
              call   = match.call(),
-             formula= formula(object),
+             formula= formula(obj),
              matrix = X,
              updated = NULL,
              data   = DATA,
@@ -232,13 +222,13 @@ setx.poisson.net <- setx.normal.net <- setx.probit.net <- setx.logit.net <-
              cond   = cond,
              new.data = data,
              special.parameters = list(...),
-             label = object$label,
+             label = obj$label,
              explan = NULL,
              pred   = NULL
              )
 
 
   # set class and return
-  class(sx) <- c(object$name, "setx")
+  class(sx) <- c(obj$name, "setx")
   sx
 }

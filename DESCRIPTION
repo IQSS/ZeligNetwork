@@ -52,4 +52,4 @@ Collate:
     'zelig2probit.net.R'
     'ZeligNetwork-package.R'
     'common-methods.R'
-    'plot.simulations.R'
+    'plots.R'

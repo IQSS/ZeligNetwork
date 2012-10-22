@@ -66,7 +66,7 @@
   }
 
   if (both.ev.exist) {
-    simulations.plot(
+    Zelig:::simulations.plot(
       qi[["Expected Values: E(Y|X)"]],
       qi[["Expected Values (for X1): E(Y|X1)"]],
       main = "Comparison of E(Y|X) and E(Y|X1)",

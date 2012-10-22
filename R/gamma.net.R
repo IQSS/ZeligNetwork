@@ -1,4 +1,4 @@
-#' Fitting Gamma Network Models
+#' Fitting C-log-log Network Models
 #'
 #' Fit social network data.
 #' @param formula formula
@@ -11,17 +11,20 @@
 #' @param nullhyp character-vector or NULL
 #' @param tol numeric
 #' @param reps integer
-#' @return Some kind of model
+#' @return an object of ``netglm'' class
 #' @export
-gamma.net <- function (
-                       formula, data, LF= "inverse", 
+netgamma <- function (
+                       formula,
+                       data,
+                       LF= "inverse", 
                        family=Gamma(link=LF), 
                        ..., 
-                       mode = "digraph", diag = FALSE, 
+                       mode = "digraph",
+                       diag = FALSE, 
                        nullhyp = NULL, 
-                       tol = 1e-07, reps = 1000
-                       ) 
-{	
+                       tol = 1e-07,
+                       reps = 1000
+                       ) {	
   
   # The following if-statement was added to prevent bugs in Roxygen
   if (missing(nullhyp) || is.null(nullhyp)) {
@@ -38,7 +41,7 @@ gamma.net <- function (
         for (i in 2:length(glist)) x <- cbind(x, gvectorize(glist[[i]], 
             mode = mode, diag = diag, censor.as.na = TRUE))
         if (!is.matrix(x)) 
-            x <- matrix(x, nc = 1)
+            x <- matrix(x, ncol = 1)
         mis <- is.na(y) | apply(is.na(x), 1, any)
         glm.fit(x[!mis, ], y[!mis], family = Gamma(link=LF), intercept = FALSE)
     }
@@ -49,7 +52,7 @@ gamma.net <- function (
         for (i in 2:length(glist)) x <- cbind(x, gvectorize(glist[[i]], 
             mode = mode, diag = diag, censor.as.na = TRUE))
         if (!is.matrix(x)) 
-            x <- matrix(x, nc = 1)
+            x <- matrix(x, ncol = 1)
         mis <- is.na(y) | apply(is.na(x), 1, any)
         list(qr(x[!mis, ], tol = tol), y[!mis])
     }
@@ -157,7 +160,7 @@ gamma.net <- function (
                 gr[[i + 1]] <- switch(nullhyp, cugtie <- rgraph(n, 
                   mode = mode, diag = diag, replace = FALSE, 
                   tielist = g[[i + 1]]), cugden <- rgraph(n, 
-                  tp = gden(g[[i + 1]], mode = mode, diag = diag), 
+                  tprob = gden(g[[i + 1]], mode = mode, diag = diag), 
                   mode = mode, diag = diag), cuguman <- (function(dc, 
                   n) {
                   rguman(1, n, mut = x[1], asym = x[2], null = x[3], 

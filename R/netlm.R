@@ -1,11 +1,3 @@
-#' Fitting Simple Regression Network Models
-#'
-#' Fit social network data.
-#' @param formulA formula
-#' @param data data.frame
-#' @param ... Additional parameters
-#' @return Some kind of model
-#' @export
 netlm <- function (formula, data, ...) {
   print("<")
     Terms <- terms(formula)

@@ -1,8 +1,8 @@
-\name{gamma.net}
-\alias{gamma.net}
-\title{Fitting Gamma Network Models}
+\name{netgamma}
+\alias{netgamma}
+\title{Fitting C-log-log Network Models}
 \usage{
-  gamma.net(formula, data, LF = "inverse",
+  netgamma(formula, data, LF = "inverse",
     family = Gamma(link = LF), ..., mode = "digraph",
     diag = FALSE, nullhyp = NULL, tol = 1e-07, reps = 1000)
 }
@@ -28,7 +28,7 @@
   \item{reps}{integer}
 }
 \value{
-  Some kind of model
+  an object of ``netglm'' class
 }
 \description{
   Fit social network data.

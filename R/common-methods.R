@@ -15,4 +15,4 @@ plot.zelig <- function (x, ...)
 
 #' @S3method logLik zelig
 logLik.zelig <- function (object, ...)
-  plot(x$result, ...)
+  plot(object$result, ...)

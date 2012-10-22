@@ -2,8 +2,8 @@
 \alias{qi.cloglog.net}
 \title{Compute Quantities of Interest for the Zelig Model cloglog.net}
 \usage{
-  qi.cloglog.net(obj, x = null, x1 = null, y = null,
-    num = 1000, param = null)
+  qi.cloglog.net(obj, x = NULL, x1 = NULL, y = NULL,
+    num = 1000, param = NULL)
 }
 \arguments{
   \item{obj}{a zelig object}

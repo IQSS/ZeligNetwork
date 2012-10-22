@@ -8,7 +8,7 @@
 #' @return a list of key-value pairs specifying pairing titles of quantities of 
 #' interest with their simulations
 #' @export
-qi.cloglog.net <- function(obj, x=null, x1=null, y=null, num=1000, param=null) {
+qi.cloglog.net <- function(obj, x=NULL, x1=NULL, y=NULL, num=1000, param=NULL) {
 
   inv <- linkinv(param)
   beta <- coef(param)
