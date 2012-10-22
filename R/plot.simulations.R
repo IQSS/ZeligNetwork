@@ -1,5 +1,4 @@
-#' @S3method plot sim.cloglog.net
-plot.sim.cloglog.net <- function (x, ...) {
+.plot.net <- function (x, ...) {
   # Save old state
   old.par <- par(no.readonly=T)
 
@@ -62,7 +61,7 @@ plot.sim.cloglog.net <- function (x, ...) {
   Zelig:::simulations.plot(qi[[titles$ev]], main = titles$ev, col = color.x, line.col = "black")
 
   if (!is.null(x$x1) && !is.na(x$x1)) {
-    Zelig:::simulations.plot(qi[[titles$ev1]], main = titles$ev, col = color.x, line.col = "black")
+    Zelig:::simulations.plot(qi[[titles$ev1]], main = titles$ev, col = color.x1, line.col = "black")
     Zelig:::simulations.plot(qi[[titles$fd]], main = titles$fd, col = color.mixed, line.col = "black")
   }
 
@@ -81,3 +80,24 @@ plot.sim.cloglog.net <- function (x, ...) {
   # Return old parameter invisibly
   invisible(old.par)
 }
+
+#' @S3method plot sim.cloglog.net
+plot.sim.cloglog.net <- .plot.net
+
+#' @S3method plot sim.gamma.net
+plot.sim.gamma.net <- .plot.net
+
+#' @S3method plot sim.logit.net
+plot.sim.logit.net <- .plot.net
+
+#' @S3method plot sim.ls.net
+plot.sim.ls.net <- .plot.net
+
+#' @S3method plot sim.normal.net
+plot.sim.normal.net <- .plot.net
+
+#' @S3method plot sim.poisson.net
+plot.sim.poisson.net <- .plot.net
+
+#' @S3method plot sim.probit.net
+plot.sim.probit.net <- .plot.net

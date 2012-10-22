@@ -16,6 +16,8 @@ x.low <- setx(z.out, perpower = quantile(friendship$perpower, prob=0.25))
 s.out <- sim(z.out, x = x.high)
 
 summary(s.out)
-class(s.out)
 
+plot(s.out)
+
+s.out <- sim(z.out, x = x.high, x1 = x.low)
 plot(s.out)
