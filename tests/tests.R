@@ -17,6 +17,8 @@ summary(s.out)
 
 plot(s.out)
 
+q()
+
 # GAMMA.NET
 # GAMMA.NET
 # GAMMA.NET
